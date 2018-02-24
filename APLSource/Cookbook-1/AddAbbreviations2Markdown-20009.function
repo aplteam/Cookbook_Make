@@ -1,0 +1,14 @@
+ {r}←AddAbbreviations2Markdown chapters;i;filename;md;fullPath;abbrs;title;noOf
+ r←⍬
+ abbrs←GetListOfAbbriviations ⍬
+ noOf←⊃⍴chapters
+ :For i :In ⍳noOf
+     (filename title)←chapters[i;]
+     Log'   Adding <abbr> to "',filename,'" (',(⍕i),' of ',(⍕noOf),')'
+     fullPath←HomePath,'manuscript/',filename
+     md←A.ReadUtf8File fullPath
+     md←RemoveAbbreviations md
+     md↓⍨←-+/∧\0=⌽⊃¨⍴¨md
+     md,←'' '',abbrs
+     A.WriteUtf8File fullPath md
+ :EndFor

@@ -1,0 +1,7 @@
+ ReplaceAppendixTitle←{
+     title←⍵
+⍝⍝     ind←¯1+('---'⍷title)⍳1
+⍝⍝     app←A.dlb A.dtb ind↑title
+⍝⍝     (app,':<<br>><<br>>',A.dlb A.dtb(4+⍴app)↓title),'{style="margin-left:auto;margin-right:auto;"}'
+     title,'{.appendix_h1}'
+ }

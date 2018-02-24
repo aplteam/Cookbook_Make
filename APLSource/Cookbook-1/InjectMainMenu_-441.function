@@ -1,0 +1,9 @@
+ html←mainMenu InjectMainMenu_ html;ind;max
+ ind←(∨/¨'<body'∘⍷¨html)⍳1
+ html←(ind↑html),mainMenu,(ind↓html)
+ max←1++/'class="h_tag"'⍷∊mainMenu
+ ind←¯1+max⍳⍨+\∨/¨'<div class="h_tag">'∘⍷¨html
+ html←(ind↑html),'</div>' '<div id="content" class="snap-content">' '<div id="cookbook_content">',(ind↓html)
+ ind←¯1+1⍳⍨∨/¨'</body>'∘⍷¨html
+ html←(ind↑html),('</div>' '</div>'),(ind↓html)
+⍝Done

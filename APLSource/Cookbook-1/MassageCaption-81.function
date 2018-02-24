@@ -1,0 +1,6 @@
+ MassageCaption←{
+     ~'—'∊⍵:⍵
+     r←' — '⎕R'<br>'⊣⍵
+     ((1+r⍳'>')⊃r)←A.Uppercase(1+r⍳'>')⊃r
+     r
+ }

@@ -1,0 +1,9 @@
+ AddRunningNumber←{
+     markdown←⍺
+     blockNo←⊃1+'^ {0,3}# '⎕S 2⊣markdown  ⍝ Assumes that there will never be a code block with a line that starts with `# ` before the main header
+     buff←blockNo⊃markdown
+     l←buff⍳'#'
+     buff←(l↑buff),(' ',(⍕rno),'.'),l↓buff
+     (blockNo⊃markdown)←buff
+     markdown
+ }

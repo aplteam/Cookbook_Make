@@ -1,0 +1,6 @@
+ GetListOfAbbriviations←{
+     filename←HomePath,'manuscript/Abbreviations.txt'
+     buff←A.ReadUtf8File filename
+     abbrs←(buff⍳¨' '){((⍺-1)↑⍵)(⍺↓⍵)}¨buff  ⍝ Split at first blanks
+     ⊃¨{'*[',⍺,']: ',⍵}/¨abbrs
+ }

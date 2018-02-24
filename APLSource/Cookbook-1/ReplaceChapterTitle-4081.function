@@ -1,0 +1,7 @@
+ ReplaceChapterTitle←{
+     title←⍵
+     no←⍺
+     r←'# Chapter ',(⍕i),':'
+     r,←⊃,/2⍴⊂'<<br>>'
+     r,(2↓title),'{style="margin-left:auto;margin-right:auto;"}'
+ }

@@ -1,0 +1,14 @@
+ {r}←InjectCookbookSpecialties chapters;noOf;i;mainMenu;footer;html;filename
+ r←⍬
+ noOf←⊃⍴chapters
+ Log'*** Polishing HTML...'
+ :For i :In ⍳noOf
+     Log'   Chapter ',(⍕i),' of ',⍕noOf
+     mainMenu←CreateMainTOC chapters i
+     filename←HomePath,'HTML/',3⊃chapters[i;]
+     html←A.ReadUtf8File filename
+     html←mainMenu InjectMainMenu_ html
+     html←InjectJavaScript html
+     A.WriteUtf8File filename html
+ :EndFor
+⍝Done

@@ -1,0 +1,30 @@
+ r←GetMainFooter(no chapters filenames);prev;next;select
+⍝ Returns one <div> with two <span> all going to the bottom of every Cookbook chapter allowing
+⍝ the user to click on a link to go to the previous or the next chapter (if any), and
+⍝ to select any chapter from a combo box.
+ r←⊂''
+ r,←⊂''
+ r,←⊂'<div id="mainfooter">'
+
+
+ :If 0∊⍴prev←(0<no-1)/no-1
+     prev←'<a alt="There is no previous chapter" class="inactive">&lt; Previous</a>'
+ :Else
+     prev←'<a href="',(prev⊃filenames),'" alt="',(prev⊃chapters),'">&lt; Previous</a>'
+ :EndIf
+ r,←⊂'<div  id="mainfooter_prev">',prev,'</div>'
+
+ select←CreateDropDownList chapters filenames i
+ r,←(⊂'<div id="mainfooter_select">'),select,(⊂'</div>')
+
+ :If 0∊⍴next←((↑⍴chapters)>no)/no+1
+     next←'<a alt="There is no next chapter" class="inactive">&gt; Next</a>'
+ :Else
+     next←'<a href="',(next⊃filenames),'" alt="',(next⊃chapters),'">&gt; Next</a>'
+ :EndIf
+ r,←⊂'<div  id="mainfooter_next">',next,'</div>'
+
+ r,←⊂'</div>'
+ r,←⊂''
+ r,←⊂''
+⍝Done

@@ -1,0 +1,9 @@
+ {r}←CompileChapterLoop(chapters parms);i;noOf;newFilename;oldFilename
+ r←⍬
+ noOf←⊃⍴chapters
+ :For i :In ⍳noOf
+     oldFilename←1⊃chapters[i;]
+     newFilename←(¯2↓oldFilename),'html'
+     Log'   Creating "',newFilename,'" (',(⍕i),' of ',(⍕noOf),')'
+     parms CompileChapter_ oldFilename newFilename i
+ :EndFor

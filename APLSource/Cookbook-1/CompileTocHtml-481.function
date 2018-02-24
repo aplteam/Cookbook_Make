@@ -1,0 +1,16 @@
+ {r}←CompileTocHtml(md filename);parms;ns;html
+ r←⍬
+ parms←M.CreateParms
+ parms.outputFilename←filename
+ parms.createFullHtmlPage←1
+ parms.bookmarkLink←0
+ parms.title←'Dyalog Cookbook TOC'
+ parms.linkToCSS←1
+ parms.cssURL←'CSS\'
+ parms.screenCSS←'BlackOnWhite_screen.css,Cookbook_Chapter_screen.css'
+ parms.printCSS←'BlackOnWhite_print.css,Cookbook_Chapter_print.css'
+ ns←M.Init parms md
+ ns←M.Process ns
+ html←parms M.MakeHTML_Doc ns.html
+ A.WriteUtf8File filename html
+⍝Done

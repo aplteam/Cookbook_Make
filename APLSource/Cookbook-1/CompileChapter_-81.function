@@ -1,0 +1,12 @@
+ {r}←parms CompileChapter_(sourceFilename targetFilename rno);config;md;ns;html
+ r←⍬
+ parms.outputFilename←'"',HomePath,'HTML/',targetFilename
+ config←A.ReadUtf8File HomePath,'manuscript/.meddy'
+ md←A.ReadUtf8File HomePath,'manuscript/',sourceFilename
+ md(AddRunningNumber)←rno
+ ns←M.Init parms md
+ ns←M.Process ns
+ Assert 0∊⍴∊'Warning:'∘{⍵/⍨⍺≢(⍴⍺)↑⍵}¨ns.report
+ html←parms M.MakeHTML_Doc ns.html
+ A.WriteUtf8File parms.outputFilename html
+⍝Done

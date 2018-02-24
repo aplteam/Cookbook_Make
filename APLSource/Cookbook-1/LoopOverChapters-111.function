@@ -1,0 +1,18 @@
+ r←LoopOverChapters chapters;no;title;i;filename;buff;ns;noOf
+ r←''
+ noOf←⊃⍴chapters
+ :For i :In ⍳noOf
+     title←2⊃chapters[i;]
+     no←⍎2↑1⊃chapters[i;]
+     Log'Processing chapter ',(⍕i),' of ',(⍕noOf),' chapters in total for the book'
+     filename←HomePath,'manuscript/',1⊃chapters[i;]
+     buff←A.ReadUtf8File filename
+     buff←(0≠⍴'{:: encoding'⎕S 0⊣buff)↓buff
+     buff/⍨←'[parm]:'{⍺∘≢¨(⍴⍺)↑¨⍵}buff
+     buff↓⍨←+/∧\0=⊃∘⍴¨buff
+     buff←(+/∧\'⍝'=⊃¨buff)↓buff
+     (1⊃buff)←i ReplaceChapterTitle 1⊃buff
+     ns←M.Init parms buff
+     ns←M.Process ns
+     r,←(⊂'<article>'),ns.html,(⊂'</article>')
+ :EndFor

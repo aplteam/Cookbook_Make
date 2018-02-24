@@ -1,0 +1,12 @@
+ GetListOfAllChapters←{
+     buff←A.dlb A.ReadUtf8File HomePath,'manuscript/.cookbook'
+     buff/⍨←'⍝'≠⊃¨buff
+     buff/⍨←0<⊃∘⍴¨buff
+     buff←↑' 'A.Split¨buff
+     buff[;2]←{⊃⊃(//)⎕VFI ⍵}¨buff[;2]
+     list←⊃F.Dir HomePath,'manuscript/*.md'
+     list←{⊃,/1↓⎕NPARTS ⍵}¨list
+     list/⍨←⊃∘⊃∘⎕VFI¨2↑¨list
+     list←((⍎¨2↑¨list)∊buff[;2])⌿list
+     ↑{⍵(¯3↓3↓⍵)}¨list
+ }

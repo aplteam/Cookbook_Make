@@ -1,0 +1,7 @@
+ GetTitleFromChapter←{
+ ⍝ Returns the top-level header from markdown ⍵.
+ ⍝ Requires the header to be marked-up with at least "===="; # does not do!
+     filename←HomePath,'manuscript/',⍵,'.md'
+     md←A.ReadUtf8File filename
+     {A.dlb ⍵↓⍨⍵⍳'#'}(({⊃⍴' {0,3}# .*'⎕S 0 1⍠('Greedy' 0)⊣⍵}¨md)⍳1)⊃md
+ }

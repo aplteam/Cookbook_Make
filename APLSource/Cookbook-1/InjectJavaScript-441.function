@@ -1,0 +1,13 @@
+ html←InjectJavaScript html;ind;js
+ js←''
+ js,←⊂'<script>'
+ js,←⊂'var snapper = new Snap({'
+ js,←⊂'element: document.getElementById(''content'')'
+ js,←⊂'});'
+ js,←⊂'document.getElementById(''mainmenu_match'').onclick = function(){'
+ js,←⊂'snapper.state().state===''closed''?snapper.open(''left''):snapper.close();'
+ js,←⊂'}'
+ js,←⊂'</script>'
+ ind←¯1+(∨/¨'</body'∘⍷¨html)⍳1
+ html←(ind↑html),js,(ind↓html)
+⍝Done

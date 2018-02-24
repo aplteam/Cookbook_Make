@@ -1,0 +1,23 @@
+ {r}←{offFlag}Make printToSessionFlag;chapters;A;F;M;Log
+⍝ This function:
+⍝ * Created a markdown file `01_toc` from the files listed in `.Cookbook`.
+⍝ * Compiles all chapters listed in the file `.Cookbook`.
+⍝ * Injects the main menu (over all chapters) in each resulting HTML document.
+ r←⍬
+ Init ⍬
+ offFlag←{0<⎕NC ⍵:⍎⍵ ⋄ ~A.IsDevelopment}'offFlag'
+ Log←printToSessionFlag∘{⍺=0:r←⍬ ⋄ ⎕←⍵}
+ #.⎕SHADOW'INI'
+ #.INI←⎕NEW #.IniFiles(,⊂'Cookbook.ini')
+ 'INI file does not point to a directory 'Assert F.IsDir HomePath
+ 'No Markdown files found'Assert 0<⍴⊃F.Dir HomePath,'\manuscript\*.md'
+ F.DeleteFile⊃F.Dir HomePath,'HTML\*.html'
+ ('No chapter(s) found in ',HomePath,'manuscript')Assert~0∊⍴chapters←GetListOfAllChapters ⍬
+ AddAbbreviations2Markdown chapters
+ chapters←CompileChapter chapters
+ InjectCookbookSpecialties chapters
+ Build_TOC chapters
+ CompileSingleHtmlDocument chapters
+ Log'*** Done'
+ Quad_OFF offFlag
+⍝Done

@@ -1,0 +1,14 @@
+ chapters←CompileChapter chapters;parms
+ parms←M.CreateParms
+ parms←M.CreateParms
+ parms.linkToCSS←1
+ parms.cssURL←'./CSS/'
+ parms.screenCSS←'BlackOnWhite_screen.css,Cookbook_Chapter_screen.css,snap.css'
+ parms.printCSS←'BlackOnWhite_print.css,Cookbook_Chapter_print.css'
+ parms.verbose←0
+ parms.collapsibleTOC←1
+ parms.head←⊂'<script src="./JavaScript/snap.js"></script>'
+ parms(InjectConfigFile)←HomePath,'manuscript/.Meddy'
+ CompileChapterLoop chapters parms
+ chapters,←(¯2↓¨chapters[;1]),¨⊂'html'
+⍝Done

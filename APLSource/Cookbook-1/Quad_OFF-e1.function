@@ -1,0 +1,5 @@
+ {r}←Quad_OFF flag
+ r←⍬
+ :If flag
+     ⎕OFF
+ :EndIf

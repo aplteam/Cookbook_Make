@@ -1,0 +1,15 @@
+ {r}←Init dummy
+ r←⍬
+ ⎕IO←1 ⋄ ⎕ML←1
+ (A F)←#.(APLTreeUtils FilesAndDirs)
+ F.PolishCurrentDir
+ :If 9=#.⎕NC'MarkAPL'
+     M←#.MarkAPL
+ :ElseIf 9=#.⎕NC'_MarkAPL'
+     M←#._MarkAPL.MarkAPL
+ :ElseIf 9=#.⎕NC'_Meddy'
+     M←#._Meddy.MarkAPL
+ :Else
+     'Could not find MarkAPL'⎕SIGNAL 6
+ :EndIf
+⍝Done

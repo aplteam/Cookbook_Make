@@ -1,0 +1,47 @@
+ md←CompileTocMarkdown chapters;filename;md;type;no;title;lastType;item;firstFlag;i;noOf
+ md←''
+ md,←⊂'Dyalog Cookbook'
+ md,←⊂'==============='
+ md,←⊂''
+ md,←⊂'Table of contents'
+ md,←⊂'--------------------'
+ md,←⊂''
+
+ lastType←''
+ firstFlag←0
+ noOf←⊃⍴chapters
+ :For i :In ⍳noOf
+     title←2⊃chapters[i;]
+     no←⍎2↑1⊃chapters[i;]
+     type←AppendicesStartAt≤no
+     filename←3⊃chapters[i;]
+     :If lastType≢type
+         md,←⊂''
+         md,←⊂'### ',(1+type)⊃'Chapters' 'Appendicies'
+         md,←⊂''
+         lastType←type
+         firstFlag←1
+     :EndIf
+     :If type
+         title←(1+title⍳'—')↓title
+     :EndIf
+     :If firstFlag
+         item←'* ',(⍕no),'. [',title,'](./',filename,'{id="overalltoc"})'
+         firstFlag←0
+     :Else
+         item←'* ',(⍕no),'. [',title,'](./',filename,')'
+     :EndIf
+     md,←⊂item
+ :EndFor
+
+ md,←⊂''
+
+  ⍝TODO⍝  ⍝TODO⍝  ⍝TODO⍝ ↓↓
+ md,←⊂'[All chapters as one HTML file (for printing)](ftp://ftp.aplwiki.com/APLTeam/Cookbook/Dyalog_Cookbook.html){style="margin-top:2em;"}'
+  ⍝ As soon as we have a real URL (cookbook.dyalog.com) we can use a relative path. That's because we use ftp:// as protocol
+  ⍝ in order to keep it from the search bots.
+  ⍝TODO⍝  ⍝TODO⍝  ⍝TODO⍝ ↑↑
+
+ md,←⊂''
+ md,←⊂'(c) Dyalog Ltd 2018 --- Written by Kai Jaeger and Stephen Taylor{#copyright style="margin-top:3em;"}'
+⍝Done

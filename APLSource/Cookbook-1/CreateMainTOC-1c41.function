@@ -1,0 +1,45 @@
+ r←CreateMainTOC(chapters no);type;prev;next;captions
+⍝ Creates the HTML needed for the main menu (chapters and appendices).
+ type←~∨/¨'Appendix'∘⍷¨chapters[;1]   ⍝ 1= chapter; - = appendices
+ r←⊂'<div class="snap-drawers">'
+ r,←⊂'<div class="snap-drawer snap-drawer-left">'
+
+ r,←⊂'<div class="h_tag">'
+ r,←⊂'<h3>Chapters</h3>'
+ r,←⊂'</div>'
+ r,←⊂'<ol>'
+ captions←MassageCaption¨type/chapters[;2]
+ r,←{'<li>',⍵}¨(type/chapters[;3]){'<a href="./',(PercentEncodeSpace ⍺),'" class="external_link">',⍵,'</a></li>'}¨captions
+ r,←⊂'</ol>'
+
+ r,←⊂'<div class="h_tag">'
+ r,←⊂'<h3>Appendices</h3>'
+ r,←⊂'</div>'
+ r,←⊂'<ol>'
+ type←~type
+ captions←{⍵↓⍨1+⍵⍳'—'}¨type/chapters[;2]
+ r,←{'<li>',⍵}¨(type/chapters[;3]){'<a href="./',(PercentEncodeSpace ⍺),'" class="external_link">',⍵,'</a></li>'}¨captions
+ r,←⊂'</ol>'
+
+ r,←⊂'<div class="h_tag">'
+ r,←⊂'<h3>Misc</h3>'
+ r,←⊂'</div>'
+ r,←⊂'<ul>'
+ :If 0∊⍴prev←(0<no-1)/no-1
+     r,←⊂'<li><a title="There is no previous chapter" class="inactive">Previous chapter</a></li>'
+ :Else
+     r,←⊂'<li><a href="',(PercentEncodeSpace prev⊃chapters[;3]),'">Previous chapter</a></li>'
+ :EndIf
+ :If 0∊⍴next←((⊃⍴chapters)>no)/no+1
+     r,←⊂'<li><a title="There is no next chapter" class="inactive">Next chapter</a></li>'
+ :Else
+     r,←⊂'<li><a href="',(PercentEncodeSpace next⊃chapters[;3]),'">Next chapter;</a></li>'
+ :EndIf
+ r,←⊂'<li><a href="./Dyalog_Cookbook.html" class="external_link">Single document<br>(All chapters, for printing)</a></li>'
+ r,←⊂'</ul>'
+
+ r,←'</div>' '</div>'
+ r,←⊂'<div id="mainmenu">'   ⍝ The closing </div> comes MUCH later!
+ r,←⊂'<a href=#><p><span id="mainmenu_match">≡</span></p></a>'
+ r,←⊂'<p><span id="mainmenu_title">The Dyalog Cookbook</span></p>'
+⍝Done

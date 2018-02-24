@@ -1,0 +1,11 @@
+ parms←parms InjectConfigFile filename;data;bool
+⍝ Tries to find a Meddy config file (.Meddy).
+⍝ If there is such a file it looks for any parameters (⍵) and takes them.
+ :If 1=#.FilesAndDirs.IsFile filename
+     data←A.Nest A.ReadUtf8File filename
+     data←↑'='A.Split¨,data
+     data[;1]←data[;1]~¨' '
+ :AndIf 0<+/bool←data[;1]∊parms.∆List[;1]
+     parms.{⍎(1⊃⍵),'←',2⊃⍵}¨↓bool⌿data
+ :EndIf
+⍝Done

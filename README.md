@@ -12,7 +12,7 @@ Holds all the markdown files defining the chapters and appendices.
 
 ## HTML\
 
-All the HTML files will be written to this directory
+All the HTML files will be written to this directory: `HTML\`.
 
 This directory must also host the directories `CSS\`, `Images\` and `JavaScript\`.
 

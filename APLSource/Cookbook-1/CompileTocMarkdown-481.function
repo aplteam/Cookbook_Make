@@ -1,4 +1,4 @@
- md←CompileTocMarkdown chapters;filename;md;type;no;title;lastType;item;firstFlag;i;noOf
+ md←CompileTocMarkdown chapters;filename;md;type;no;title;lastType;item;firstFlag;i;noOf;k
  md←''
  md,←⊂'Dyalog Cookbook'
  md,←⊂'==============='
@@ -12,7 +12,7 @@
  noOf←⊃⍴chapters
  :For i :In ⍳noOf
      title←2⊃chapters[i;]
-     no←⍎2↑1⊃chapters[i;]
+     no←GetRunningNumber 1⊃chapters[i;]
      type←AppendicesStartAt≤no
      filename←3⊃chapters[i;]
      :If lastType≢type
@@ -23,13 +23,17 @@
          firstFlag←1
      :EndIf
      :If type
-         title←(1+title⍳'—')↓title
+         title←(title⍳'_')↓title
+         k←(⍕1+no-50),'.'
+     :Else
+         k←(⍕no),'.'
      :EndIf
+     title←{' '@(⍸⍵='-')⊣⍵}title
      :If firstFlag
-         item←'* ',(⍕no),'. [',title,'](./',filename,'{id="overalltoc"})'
+         item←k,' [',title,'](./',filename,'{id="overalltoc"})'
          firstFlag←0
      :Else
-         item←'* ',(⍕no),'. [',title,'](./',filename,')'
+         item←k,' [',title,'](./',filename,')'
      :EndIf
      md,←⊂item
  :EndFor

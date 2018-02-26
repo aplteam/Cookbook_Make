@@ -1,4 +1,4 @@
- {r}←Build_TOC chapters;md;filename;html
+ {r}←BuildIndexPage chapters;md;filename;html
  r←⍬
  filename←'"',HomePath,'HTML/index.html"'
  md←CompileTocMarkdown chapters

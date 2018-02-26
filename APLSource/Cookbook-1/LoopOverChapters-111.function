@@ -3,7 +3,7 @@
  noOf←⊃⍴chapters
  :For i :In ⍳noOf
      title←2⊃chapters[i;]
-     no←⍎2↑1⊃chapters[i;]
+     no←GetRunningNumber 1⊃chapters[i;]
      Log'Processing chapter ',(⍕i),' of ',(⍕noOf),' chapters in total for the book'
      filename←HomePath,'manuscript/',1⊃chapters[i;]
      buff←A.ReadUtf8File filename

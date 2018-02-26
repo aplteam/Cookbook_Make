@@ -15,7 +15,7 @@
  ns←M.Init parms md
  ns←M.Process ns
  html←ns.html
- bool←AppendicesStartAt>⍎¨2↑¨chapters[;1]
+ bool←AppendicesStartAt>⊃∘GetRunningNumber¨chapters[;1]
  html,←LoopOverChapters bool⌿chapters
  bool←~bool
  html,←LoopOverAppendices bool⌿chapters

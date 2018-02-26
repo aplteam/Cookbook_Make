@@ -1,0 +1,5 @@
+ GetRunningNumber←{
+⍝ ⍵ is either a chapter or an appendix.
+     no←'Appendix'{⍺≡(⍴⍺)↑⍵:2↑(1+⍴⍺)↓⍵ ⋄ 2↑⍵}⍵
+     ⊃(//)⎕VFI no
+ }

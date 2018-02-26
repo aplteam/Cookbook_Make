@@ -14,9 +14,9 @@
  F.DeleteFile⊃F.Dir HomePath,'HTML\*.html'
  ('No chapter(s) found in ',HomePath,'manuscript')Assert~0∊⍴chapters←GetListOfAllChapters ⍬
  AddAbbreviations2Markdown chapters
- chapters←CompileChapter chapters    ⍝ Processes both chapters and appendices
+ chapters←CompileChapter chapters
  InjectCookbookSpecialties chapters
- Build_TOC chapters
+ BuildIndexPage chapters
  CompileSingleHtmlDocument chapters
  Log'*** Done'
  Quad_OFF offFlag

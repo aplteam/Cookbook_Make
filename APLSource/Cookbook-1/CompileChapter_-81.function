@@ -1,7 +1,7 @@
  {r}←parms CompileChapter_(sourceFilename targetFilename rno);config;md;ns;html
  r←⍬
  parms.outputFilename←'"',HomePath,'HTML/',targetFilename
- config←A.ReadUtf8File HomePath,'manuscript/.meddy'
+ config←A.ReadUtf8File HomePath,'manuscript/.Meddy'
  md←A.ReadUtf8File HomePath,'manuscript/',sourceFilename
  md(AddRunningNumber)←rno
  ns←M.Init parms md

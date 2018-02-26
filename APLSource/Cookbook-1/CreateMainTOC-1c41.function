@@ -17,7 +17,8 @@
  r,←⊂'</div>'
  r,←⊂'<ol>'
  type←~type
- captions←{⍵↓⍨1+⍵⍳'—'}¨type/chapters[;2]
+ captions←{⍵↓⍨⍵⍳'_'}¨type/chapters[;2]
+ captions←{' '@(⍸⍵='-')⊣⍵}¨captions
  r,←{'<li>',⍵}¨(type/chapters[;3]){'<a href="./',(PercentEncodeSpace ⍺),'" class="external_link">',⍵,'</a></li>'}¨captions
  r,←⊂'</ol>'
 
@@ -40,6 +41,6 @@
 
  r,←'</div>' '</div>'
  r,←⊂'<div id="mainmenu">'   ⍝ The closing </div> comes MUCH later!
- r,←⊂'<a href=#><p><span id="mainmenu_match">≡</span></p></a>'
+ r,←⊂'<a href=# style="color:black;"><p><span id="mainmenu_match">≡</span></p></a>'
  r,←⊂'<p><span id="mainmenu_title">The Dyalog Cookbook</span></p>'
 ⍝Done

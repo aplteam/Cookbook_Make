@@ -1,5 +1,5 @@
  GetListOfAllChapters←{
-     buff←A.dlb A.ReadUtf8File HomePath,'manuscript/.cookbook'
+     buff←A.dlb A.ReadUtf8File HomePath,'manuscript/.Cookbook'
      buff/⍨←'⍝'≠⊃¨buff
      buff/⍨←0<⊃∘⍴¨buff
      buff←↑' 'A.Split¨buff

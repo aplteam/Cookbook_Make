@@ -34,9 +34,9 @@
  :If 0∊⍴next←((⊃⍴chapters)>no)/no+1
      r,←⊂'<li><a title="There is no next chapter" class="inactive">Next chapter</a></li>'
  :Else
-     r,←⊂'<li><a href="',(PercentEncodeSpace next⊃chapters[;3]),'">Next chapter;</a></li>'
+     r,←⊂'<li><a href="',(PercentEncodeSpace next⊃chapters[;3]),'">Next chapter</a></li>'
  :EndIf
- r,←⊂'<li><a href="./Dyalog_Cookbook.html" class="external_link">Single document<br>(All chapters, for printing)</a></li>'
+ r,←⊂'<li><a href="./Dyalog_Cookbook.html" class="external_link" alt="All chapters, for printing" title="All chapters, for printing">Single document<br></a></li>'
  r,←⊂'</ul>'
 
  r,←'</div>' '</div>'

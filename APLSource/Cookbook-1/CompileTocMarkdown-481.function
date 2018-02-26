@@ -13,7 +13,7 @@
  :For i :In ⍳noOf
      title←2⊃chapters[i;]
      no←GetRunningNumber 1⊃chapters[i;]
-     type←AppendicesStartAt≤no
+     type←((⊃¨chapters[;1])⍳'A')≤i
      filename←3⊃chapters[i;]
      :If lastType≢type
          md,←⊂''
@@ -24,7 +24,7 @@
      :EndIf
      :If type
          title←(title⍳'_')↓title
-         k←(⍕1+no-50),'.'
+         k←(⍕no),'.'
      :Else
          k←(⍕no),'.'
      :EndIf

@@ -7,6 +7,7 @@
      list←⊃F.Dir HomePath,'manuscript/*.md'
      list←{⊃,/1↓⎕NPARTS ⍵}¨list
      list/⍨←({⊃⊃(//)⎕VFI ⍵}¨2↑¨'Appendix'∘{⍺≡(⍴⍺)↑⍵:(1+⍴⍺)↓⍵ ⋄ ⍵}¨list)∊buff[;2]
-     (3×⊃∘⊃∘⎕VFI¨2↑¨list)↓¨list
-     ⍝
+     list2←¯3↓¨(3×⊃∘⊃∘⎕VFI¨2↑¨list)↓¨list
+     list2←{' '@(⍸'-'=⍵)⊣⍵}¨list2
+     ⍉↑list list2
  }

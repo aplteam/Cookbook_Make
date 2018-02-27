@@ -41,7 +41,7 @@
  md,←⊂''
 
   ⍝TODO⍝  ⍝TODO⍝  ⍝TODO⍝ ↓↓
- md,←⊂'[View as single HTML file](ftp://ftp.aplwiki.com/APLTeam/Cookbook/Dyalog_Cookbook.html "For printing and searching"){style="margin-top:2em;"}'
+ md,←⊂'[View as single HTML file](./Dyalog_Cookbook.html "For printing and searching"){style="margin-top:2em;"}'
   ⍝ As soon as we have a real URL (cookbook.dyalog.com) we can use a relative path. That's because we use ftp:// as protocol
   ⍝ in order to keep it from the search bots.
   ⍝TODO⍝  ⍝TODO⍝  ⍝TODO⍝ ↑↑

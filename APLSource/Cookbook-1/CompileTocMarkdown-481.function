@@ -16,18 +16,14 @@
      type←((⊃¨chapters[;1])⍳'A')≤i
      filename←3⊃chapters[i;]
      :If lastType≢type
-         md,←⊂''
-         md,←⊂'### ',(1+type)⊃'Chapters' 'Appendicies'
-         md,←⊂''
+         md,←''('### ',(1+type)⊃'Chapters' 'Appendicies')''
          lastType←type
          firstFlag←1
      :EndIf
      :If type
          title←(title⍳'_')↓title
-         k←(⍕no),'.'
-     :Else
-         k←(⍕no),'.'
      :EndIf
+     k←(⍕no),'.'
      title←{' '@(⍸⍵='-')⊣⍵}title
      :If firstFlag
          item←k,' [',title,'](./',filename,'{id="overalltoc"})'
@@ -39,13 +35,7 @@
  :EndFor
 
  md,←⊂''
-
-  ⍝TODO⍝  ⍝TODO⍝  ⍝TODO⍝ ↓↓
- md,←⊂'[All chapters as one HTML file (for printing)](ftp://ftp.aplwiki.com/APLTeam/Cookbook/Dyalog_Cookbook.html){style="margin-top:2em;"}'
-  ⍝ As soon as we have a real URL (cookbook.dyalog.com) we can use a relative path. That's because we use ftp:// as protocol
-  ⍝ in order to keep it from the search bots.
-  ⍝TODO⍝  ⍝TODO⍝  ⍝TODO⍝ ↑↑
-
+ md,←⊂'[All chapters as one HTML file (for printing)](Dyalog_Cookbook.html){style="margin-top:2em;"}'
  md,←⊂''
  md,←⊂'(c) Dyalog Ltd 2018 --- Written by Kai Jaeger and Stephen Taylor{#copyright style="margin-top:3em;"}'
 ⍝Done

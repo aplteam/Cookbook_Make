@@ -18,7 +18,8 @@
  r,←⊂'<ol>'
  type←~type
  captions←{⍵↓⍨⍵⍳'_'}¨type/chapters[;2]
- captions←{' '@(⍸⍵='-')⊣⍵}¨captions
+ captions←{⍵}{' '@(⍸⍵='-')⊣⍵}¨captions    ⍝ {⍵} needed to overcome bug <01603>
+
  r,←{'<li>',⍵}¨(type/chapters[;3]){'<a href="./',(PercentEncodeSpace ⍺),'" class="external_link">',⍵,'</a></li>'}¨captions
  r,←⊂'</ol>'
 

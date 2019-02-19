@@ -24,7 +24,7 @@
          title←(title⍳'_')↓title
      :EndIf
      k←(⍕no),'.'
-     title←{' '@(⍸⍵='-')⊣⍵}title
+     title←{⍵}{' '@(⍸⍵='-')⊣⍵}title    ⍝ {⍵} needed to overcome bug <01603>
      :If firstFlag
          item←k,' [',title,'](./',filename,'{id="overalltoc"})'
          firstFlag←0

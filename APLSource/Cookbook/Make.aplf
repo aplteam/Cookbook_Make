@@ -8,7 +8,7 @@
  offFlag←{0<⎕NC ⍵:⍎⍵ ⋄ ~A.IsDevelopment}'offFlag'
  Log←printToSessionFlag∘{⍺=0:r←⍬ ⋄ ⎕←⍵}
  #.⎕SHADOW'INI'
- #.INI←⎕NEW #.IniFiles(,⊂'Cookbook.ini')
+ #.INI←⎕NEW #._dependencies.IniFiles(,⊂'Cookbook.ini')
  'INI file does not point to a directory 'Assert F.IsDir HomePath
  'No Markdown files found'Assert 0<⍴⊃F.Dir HomePath,'\manuscript\*.md'
  F.DeleteFile⊃F.Dir HomePath,'HTML\*.html'
